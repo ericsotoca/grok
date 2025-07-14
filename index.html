@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Agent IA</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin: 50px; }
+        #input { width: 300px; padding: 10px; }
+        #response { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Agent IA</h1>
+    <input id="input" type="text" placeholder="Posez votre question">
+    <button onclick="sendRequest()">Envoyer</button>
+    <div id="response"></div>
+    <script>
+        async function sendRequest() {
+            const input = document.getElementById('input').value;
+            const responseDiv = document.getElementById('response');
+            responseDiv.innerText = 'Chargement...';
+            try {
+                const response = await fetch('YOUR_API_ENDPOINT', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: input })
+                });
+                const data = await response.json();
+                responseDiv.innerText = data.response || 'Erreur';
+            } catch (error) {
+                responseDiv.innerText = 'Erreur: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
