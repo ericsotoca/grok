@@ -20,7 +20,7 @@
             const responseDiv = document.getElementById('response');
             responseDiv.innerText = 'Chargement...';
             try {
-                const response = await fetch('YOUR_API_ENDPOINT', {
+                const response = await fetch('https://IA-Agent.ericsotoca.replit.app/api', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ prompt: input })
